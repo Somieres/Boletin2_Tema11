@@ -107,11 +107,7 @@ public class Cliente implements Comparable, Serializable {
     @Override
     public String toString() {
         return
-                "nombre= " + nombre +
-                ", apellido= " + apellido  +
-                ", cif= " + cif +
-                ", categoria= " + categoria +
-                ", direccion= " + direccion ;
+                "nombre= " + nombre +", apellido= " + apellido  +", cif= " + cif + ", categoria= " + categoria +", direccion= " + direccion +System.lineSeparator();
     }
 
 

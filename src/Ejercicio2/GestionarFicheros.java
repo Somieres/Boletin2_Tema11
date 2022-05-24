@@ -307,7 +307,9 @@ public class GestionarFicheros {
          return new Cliente(nombre, apellido,cif,Character.getNumericValue(categoria),direccion);
     }
     public static Cliente transformarAObjeto1(String registro){
-        Cliente cliente = null;
+
+         Cliente cliente = null;
+
         cliente.setNombre(registro.split(",")[0]);
         cliente.setApellido(registro.split(",")[1]);
         cliente.setCif(registro.split(",")[2]);
@@ -315,4 +317,6 @@ public class GestionarFicheros {
         cliente.setDireccion(registro.split(",")[4]);
         return cliente;
     }
+
+
 }
