@@ -2,6 +2,9 @@ package Ejercicio2;
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 public class Main {
@@ -23,5 +26,14 @@ public class Main {
       //  GestionarFicheros.insertarModificacionCliente(fw,cliente3);
 
         System.out.println(GestionarFicheros.transformarAObjeto(GestionarFicheros.buscarElementoPorApellido(fr,"Ramos")));
+        Set<Cliente> lista = new TreeSet<>();
+        lista.add(new Cliente("Paco","Albiñana","cf15", 5, "C/mostrenco5"));
+        lista.add(new Cliente("Paco","Albiñana","cf15", 5, "C/mostrenco5"));
+
+        System.out.println(lista);
+
+
+
+
     }
 }
