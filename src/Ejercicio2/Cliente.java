@@ -84,14 +84,25 @@ public class Cliente implements Comparable, Serializable {
 
     @Override
     public int compareTo(Object o) {
-        int salir=0;
+
+        int comparacion=0;
+
         if (o instanceof Cliente){
             Cliente cliente=(Cliente) o;
-            salir=this.cif.compareTo(cliente.cif);
+            comparacion=this.cif.compareTo(cliente.cif);
+            if(comparacion==0){
+                comparacion=this.nombre.compareTo(cliente.nombre);
+                if (comparacion==0){
+                    comparacion=this.apellido.compareTo(cliente.apellido);
 
+                }
+            }
         }
-        return salir;
+        return comparacion;
     }
+
+
+
 
     @Override
     public String toString() {
