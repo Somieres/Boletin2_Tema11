@@ -25,9 +25,12 @@ public class Main {
       //  Cliente cliente3=new Cliente("Virginia","Delgado", "cf10",3,"C/mostrenco3");
       //  GestionarFicheros.insertarModificacionCliente(fw,cliente3);
 
-        System.out.println(GestionarFicheros.transformarAObjeto(GestionarFicheros.buscarElementoPorApellido(fr,"Ramos")));
+        //System.out.println(GestionarFicheros.transformarAObjeto(GestionarFicheros.buscarElementoPorApellido(fr,"Ramos")));
         Set<Cliente> lista = new TreeSet<>();
+        lista.add(new Cliente("Paco","Albiñana","cf15", 5, "C/mostrenco5"));
+        lista.add(new Cliente("Paca","Albiñana","cf15", 5, "C/mostrenco5"));
 
+        System.out.println(lista);
 
 
 
