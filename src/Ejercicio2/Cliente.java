@@ -90,13 +90,13 @@ public class Cliente implements Comparable, Serializable {
         if (o instanceof Cliente){
             Cliente cliente=(Cliente) o;
             comparacion=this.cif.compareTo(cliente.cif);
-            if(comparacion==0){
+          /*  if(comparacion==0){
                 comparacion=this.nombre.compareTo(cliente.nombre);
                 if (comparacion==0){
                     comparacion=this.apellido.compareTo(cliente.apellido);
 
                 }
-            }
+            }*/
         }
         return comparacion;
     }

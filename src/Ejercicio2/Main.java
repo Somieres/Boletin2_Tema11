@@ -1,7 +1,9 @@
 package Ejercicio2;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -10,6 +12,13 @@ import java.util.TreeSet;
 public class Main {
 
     public static void main(String[] args) {
+       try{
+           File f;
+           f = null;
+       } catch (Exception e) {
+           throw new RuntimeException(e);
+       }
+
         FileWriter fw=null;
         FileReader fr=null;
 
@@ -26,11 +35,11 @@ public class Main {
       //  GestionarFicheros.insertarModificacionCliente(fw,cliente3);
 
       //  System.out.println(GestionarFicheros.transformarAObjeto(GestionarFicheros.buscarElementoPorApellido(fr,"Ramos")));
-        Set<Cliente> lista = new TreeSet<>();
-        lista.add(new Cliente("Paco","Albiñana","cf15", 5, "C/mostrenco5"));
-        lista.add(new Cliente("Paca","Albiñana","cf15", 5, "C/mostrenco5"));
-
-        System.out.println(lista);
+      // Set<Cliente> lista = new TreeSet<>();
+      //  lista.add(new Cliente("Paco","Albiñana","cf15", 5, "C/mostrenco5"));
+       // lista.add(new Cliente("Paca","Albiñana","cf15", 5, "C/mostrenco5"));
+//GestionarFicheros.transformarAObjeto1("Eva,Ramos,cf12,1,C/mostrenco");
+        System.out.println(GestionarFicheros.transformarAObjeto(GestionarFicheros.buscarElementoPorApellido(fr,"Ramos")));
 
 
 

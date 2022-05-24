@@ -1,9 +1,14 @@
 package Ejercicio2;
 
+import com.sun.source.util.Trees;
+
 import javax.imageio.event.IIOReadProgressListener;
 import java.io.*;
 import java.net.PortUnreachableException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class GestionarFicheros {
 
@@ -11,7 +16,8 @@ public class GestionarFicheros {
     static BufferedWriter bw = null;
     static BufferedReader br = null;
     static Scanner sc = null;
-
+    static TreeSet<Cliente> listaClientes=new TreeSet<>();
+    static List<Cliente> listaOrdenada=new ArrayList<>(listaClientes);
     public static void escribirFichero() {
 
     }
@@ -306,9 +312,9 @@ public class GestionarFicheros {
             }
          return new Cliente(nombre, apellido,cif,Character.getNumericValue(categoria),direccion);
     }
-    public static Cliente transformarAObjeto1(String registro){
+   /* public static Cliente transformarAObjeto1(String registro){
 
-         Cliente cliente = null;
+         Cliente cliente = new Cliente();
 
         cliente.setNombre(registro.split(",")[0]);
         cliente.setApellido(registro.split(",")[1]);
@@ -316,7 +322,90 @@ public class GestionarFicheros {
         cliente.setCategoria(Integer.parseInt(registro.split(",")[3]));
         cliente.setDireccion(registro.split(",")[4]);
         return cliente;
-    }
+    }*/
 
+    public static void ordenarFicheroLEctura(FileReader fr,FileWriter fw,String nombreFichero){
+
+        try{
+            File f = new File(nombreFichero+".txt");
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
+            String linea = br.readLine();
+
+            while(linea != null){
+
+                listaClientes.add(transformarAObjeto(linea));
+                linea = br.readLine();
+            }
+
+            f = new File(nombreFichero+".dat");
+            oos = new ObjectOutputStream(new FileOutputStream(f));
+
+            listaOrdenada = new ArrayList<>(listaClientes);
+            for (int i = 0; i < listaOrdenada.size(); i++) {
+                oos.writeObject(listaOrdenada.get(i));
+            }
+
+            ois = new ObjectInputStream(new FileInputStream(f));
+            System.out.println(ois.readObject());
+            System.out.println(ois.readObject());
+            System.out.println(ois.readObject());
+            System.out.println(ois.readObject());
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println("FICHERO NO ENCONTRADO AL ordenarFichero()");
+        } catch (IOException e) {
+            System.out.println("ERROR GENERAL AL ordenarFichero()");
+        } catch (ClassNotFoundException e) {
+            System.out.println("CLASE NO ENCONTRADA AL ordenarFichero()");
+        } finally {
+            try{
+                fr.close();
+                br.close();
+                oos.close();
+            } catch (IOException e) {
+                System.out.println("ERROR AL CERRAR EL FICHERO AL ordenarFichero()");
+            }
+        }
+
+    }
+    public static void ordenarFichero(FileReader fr,FileWriter fw,String nombreFichero){
+
+        try{
+            File f = new File(nombreFichero+".txt");
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
+            String linea = br.readLine();
+
+            while(linea != null){
+
+                listaClientes.add(transformarAObjeto(linea));
+                linea = br.readLine();
+            }
+
+            f = new File(nombreFichero+".dat");
+            oos = new ObjectOutputStream(new FileOutputStream(f));
+
+            listaOrdenada = new ArrayList<>(listaClientes);
+            for (int i = 0; i < listaOrdenada.size(); i++) {
+                oos.writeObject(listaOrdenada.get(i));
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("FICHERO NO ENCONTRADO AL ordenarFichero()");
+        } catch (IOException e) {
+            System.out.println("ERROR GENERAL AL ordenarFichero()");
+        }finally {
+            try{
+                fr.close();
+                br.close();
+                oos.close();
+            } catch (IOException e) {
+                System.out.println("ERROR AL CERRAR EL FICHERO AL ordenarFichero()");
+            }
+        }
+
+    }
 
 }
