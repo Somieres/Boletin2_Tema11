@@ -18,6 +18,9 @@ public class GestionarFicheros {
     static Scanner sc = null;
     static TreeSet<Cliente> listaClientes=new TreeSet<>();
     static List<Cliente> listaOrdenada=new ArrayList<>(listaClientes);
+    static File f;
+    static ObjectOutputStream oos;
+    static ObjectInputStream ois;
     public static void escribirFichero() {
 
     }
@@ -327,7 +330,8 @@ public class GestionarFicheros {
     public static void ordenarFicheroLEctura(FileReader fr,FileWriter fw,String nombreFichero){
 
         try{
-            File f = new File(nombreFichero+".txt");
+
+            f = new File(nombreFichero+".txt");
             fr = new FileReader(f);
             br = new BufferedReader(fr);
             String linea = br.readLine();
